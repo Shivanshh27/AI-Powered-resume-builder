@@ -16,6 +16,8 @@ import { dummyResumeData } from "../assets/assets";
 import ResumePreview from "../components/ResumePreview";
 import TemplateSelector from "../components/TemplateSelector";
 import ColorPicker from "../components/ColorPicker";
+import ProfeessionalSummaryForm from "../components/ProfeessionalSummaryForm";
+
 const ResumeBuilder = () => {
   const { resumeId } = useParams();
 
@@ -98,7 +100,7 @@ const ResumeBuilder = () => {
                   <ColorPicker
                     selectedColor={resumeData.accent_color}
                     onChange={(color) =>
-                      setResumeData(prev => ({
+                      setResumeData((prev) => ({
                         ...prev,
                         accent_color: color,
                       }))
@@ -148,6 +150,18 @@ const ResumeBuilder = () => {
                     }
                     removeBackground={removeBackground}
                     setRemoveBackground={setRemoveBackground}
+                  />
+                )}
+                {activeSection.id === "summary" && (
+                  <ProfeessionalSummaryForm
+                    data={resumeData.professional_summary}
+                    onChange={(data) =>
+                      setResumeData((prev) => ({
+                        ...prev,
+                        professional_summary: data,
+                      }))
+                    }
+                    setResumeData={setResumeData}
                   />
                 )}
               </div>

@@ -66,7 +66,7 @@ const Testimonial = () => {
   return (
     <>
       <div
-        id="features"
+        id="testimonials"
         className="flex justify-center flex-col item-center my-10 scroll-mt-12"
       >
         <div className="flex justify-center mt-8">

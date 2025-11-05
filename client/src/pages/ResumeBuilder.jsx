@@ -275,11 +275,11 @@ const ResumeBuilder = () => {
                 )}
                 {activeSection.id === "projects" && (
                   <ProjectForm
-                    data={resumeData.project}
+                    data={resumeData.projects || []}
                     onChange={(data) =>
                       setResumeData((prev) => ({
                         ...prev,
-                        project: data,
+                        projects: data,
                       }))
                     }
                     setResumeData={setResumeData}
@@ -298,9 +298,12 @@ const ResumeBuilder = () => {
                   />
                 )}
               </div>
-              <button 
-              onClick={()=>{toast.promise(saveResume(), {loading: 'Saving...'})}}
-              className="bg-gradient-to-br from-green-100 to-green-200 ring-green-300 text-green-700 ring hover:ring-green-400 transition-all rounded-md px-6 py-2 mt-6 text-sm">
+              <button
+                onClick={() => {
+                  toast.promise(saveResume(), { loading: "Saving..." });
+                }}
+                className="bg-gradient-to-br from-green-100 to-green-200 ring-green-300 text-green-700 ring hover:ring-green-400 transition-all rounded-md px-6 py-2 mt-6 text-sm"
+              >
                 Save Changes
               </button>
             </div>

@@ -1,4 +1,4 @@
-import ai from "../configs/ai";
+import ai from "../configs/ai.js";
 import Resume from "../models/Resume.js";
 
 // POST: /api/ai/enhance-pro-sum
@@ -130,7 +130,7 @@ export const uploadResume = async (req, res) => {
     const extractedData = response.choices[0].message.content;
     const parsedData = JSON.parse(extractedData);
     const newResumse = await Resume.create({ userId, title, ...parsedData });
-    return res.status(200).json({ resumeId: newResumse._id });
+    return res.status(200).json({ resumeId: newResumse });
   } catch (error) {
     return res.status(400).json({ error: error.message });
   }

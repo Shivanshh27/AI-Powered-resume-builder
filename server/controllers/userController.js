@@ -42,20 +42,22 @@ export const registerUser = async (req, res) => {
 };
 
 // POST: /api/user/login
+
+
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ messgae: "User not found" });
+      return res.status(400).json({ message: "User not found" });
     }
 
     if (!user.comparePassword(password)) {
       return res.status(400).json({ message: "Invalid password" });
     }
 
-    const token = generateToken(newUser._id);
+    const token = generateToken(user._id);
     user.password = undefined;
 
     return res

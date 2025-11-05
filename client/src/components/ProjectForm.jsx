@@ -40,7 +40,7 @@ const ProjectForm = ({ data, onChange }) => {
       </div>
 
       <div className="space-y-4 mt-6">
-        {data.map((project, index) => (
+        {(data || []).map((project, index) => (
           <div
             key={index}
             className="p-4 border border-gray-200 rounded-lg space-y-3"

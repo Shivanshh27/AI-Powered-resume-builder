@@ -1,6 +1,7 @@
 import Resume from "../models/Resume.js";
 import imageKit from "../configs/imageKit.js";
 import fs from "fs";
+import { type } from "os";
 // POST: /api/resumes/create
 export const createResume = async (req, res) => {
   try {
@@ -74,20 +75,26 @@ export const updateResume = async (req, res) => {
 
     const image = req.file;
 
-    let resumeDataCopy = JSON.parse(JSON.stringify(resumeData));
+    let resumeDataCopy;
+    if (typeof resumeData === "string") {
+      resumeDataCopy = JSON.parse(resumeData);
+    } else {
+      resumeDataCopy = structuredClone(resumeData);
+    }
 
     if (image) {
       const imageBufferData = fs.createReadStream(image.path);
-        const response = await client.files.upload({
-          file: imageBufferData,
-          fileName: "resume.png",
-          folder: "user-resumes",
-          transformation: {
-            pre: 'w-300, h-300, fo-face, z-0.75' + (removeBackground ? ', bg-remove' : ''),
-          }
-        });
-        resumeDataCopy.personal_info.image = response.url;
-        
+      const response = await imageKit.upload({
+        file: imageBufferData,
+        fileName: "resume.png",
+        folder: "user-resumes",
+        transformation: {
+          pre:
+            "w-300, h-300, fo-face, z-0.75" +
+            (removeBackground ? ", bg-remove" : ""),
+        },
+      });
+      resumeDataCopy.personal_info.image = response.url;
     }
 
     const resume = await Resume.findByIdAndUpdate(
@@ -99,7 +106,7 @@ export const updateResume = async (req, res) => {
     );
     return res
       .status(200)
-      .json({ message: "Resume updated successfully", resume });
+      .json({ message: "Resume Saved successfully", resume });
   } catch (error) {
     return res.status(400).json({ error: error.message });
   }

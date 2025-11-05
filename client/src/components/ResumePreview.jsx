@@ -1,4 +1,4 @@
-import React from "react";
+
 import ClassicTemplate from "../assets/templates/ClassicTemplate";
 import MinimalTemplate from "../assets/templates/MinimalTemplate";
 import MinimalImageTemplate from "../assets/templates/MinimalImageTemplate";

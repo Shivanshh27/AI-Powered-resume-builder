@@ -1,5 +1,5 @@
 import { Plus, Sparkles, X } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const SkillsForm = ({ data, onChange }) => {
   const [newSkill, setNewSkill] = useState("");

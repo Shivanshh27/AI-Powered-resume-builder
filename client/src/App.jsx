@@ -1,10 +1,9 @@
-import React from "react";
+
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import ResumeBuilder from "./pages/ResumeBuilder";
 import Preview from "./pages/Preview";
 import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
 import Layout from "./pages/Layout";
 import { useDispatch } from "react-redux";
 import api from "./configs/api.js";

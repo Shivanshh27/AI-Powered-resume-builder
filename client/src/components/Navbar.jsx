@@ -1,6 +1,5 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { logout } from '../app/features/authSlince'
 
 const Navbar = () => {

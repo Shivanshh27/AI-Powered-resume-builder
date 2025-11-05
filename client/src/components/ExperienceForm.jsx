@@ -1,5 +1,4 @@
 import { Briefcase, Loader2, Plus, Sparkles, Trash2 } from "lucide-react";
-import React from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { useState } from "react";

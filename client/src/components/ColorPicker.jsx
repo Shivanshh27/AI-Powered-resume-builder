@@ -1,5 +1,5 @@
 import { Check, Palette } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ColorPicker = ({ selectedColor, onChange }) => {
   const colors = [
@@ -32,7 +32,8 @@ const ColorPicker = ({ selectedColor, onChange }) => {
               key={color.value}
               className="relative cursor-pointer group flex flex-col"
               onClick={() => {
-                onChange(color.value); setIsOpen(false);
+                onChange(color.value);
+                setIsOpen(false);
               }}
             >
               <div

@@ -1,6 +1,5 @@
 import {
   BriefcaseBusiness,
-  Check,
   Globe,
   Linkedin,
   Mail,
@@ -8,7 +7,6 @@ import {
   Phone,
   User,
 } from "lucide-react";
-import React from "react";
 
 const PersonalInforForm = ({
   data,
